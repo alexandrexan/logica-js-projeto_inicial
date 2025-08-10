@@ -1,7 +1,8 @@
 alert('Bem-vindo(a) ao jogo do número secreto!');
-let numeroSecreto = parseInt(Math.random() * 100 + 1);
+let numeroMaximo = 100;
+let numeroSecreto = parseInt(Math.random() * numeroMaximo + 1);
 console.log('Número secreto:', numeroSecreto);
-let palpite = prompt('Adivinhe o número secreto entre 1 e 100:');
+let palpite = prompt(`Adivinhe o número secreto entre 1 e ${numeroMaximo}:`);
 let msgErro = '⚠️ Por favor, insira um número válido.';
 let tentativas = 1;
 
@@ -17,7 +18,7 @@ while (palpite != numeroSecreto) {
         }
         tentativas++;
     }
-    palpite = prompt('Tente novamente. Adivinhe o número secreto entre 1 e 100:');
+    palpite = prompt(`Tente novamente. Adivinhe o número secreto entre 1 e ${numeroMaximo}:`);
 }
 let msgTentativas = `Parabéns! 😃 Você adivinhou o número secreto: ${numeroSecreto} com ${tentativas} ${tentativas > 1 ? 'tentativas' : 'tentativa'}.`;
 alert(msgTentativas);
