@@ -72,9 +72,26 @@
             font-weight: bold;
             cursor: pointer;
         }
+        .botao-recomecar {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #00ff00;
+            color: rgb(0, 0, 0);
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;
+        }
         .dica-texto {
             color: yellow;
             font-weight: bold;
+        }
+        .maiorMenor {
+            color: yellow;
+            font-size: 20px;
+            text-shadow: 0 0 5px #F2380F; 
         }
         .resultado {
             margin-top: 40px;
@@ -143,16 +160,37 @@
             }
 
             if (palpite === numeroSecreto) {
-                resultado.innerHTML = `<div class="mensagem-acerto">Parabéns! Você adivinhou o número secreto: ${numeroSecreto} com ${tentativas} ${tentativas > 1 ? 'tentativas' : 'tentativa'}! </div>`;
+                resultado.innerHTML = `<div class="mensagem-acerto">
+                    Parabéns! Você adivinhou o número secreto: ${numeroSecreto} com ${tentativas} ${tentativas > 1 ? 'tentativas' : 'tentativa'}!
+                </div>`;
                 botao.disabled = true;
+                
+                // Criar e adicionar botão de recomeçar
+                const botaoRecomecar = document.createElement('button');
+                botaoRecomecar.textContent = 'Jogar Novamente';
+                botaoRecomecar.className = 'botao-recomecar';
+                resultado.after(botaoRecomecar);
+                
+                botaoRecomecar.addEventListener('click', function() {
+                    // Reiniciar o jogo
+                    numeroSecreto = parseInt(Math.random() * numeroMaximo + 1);
+                    tentativas = 0;
+                    botao.disabled = false;
+                    resultado.innerHTML = '';
+                    input.value = '';
+                    input.focus();
+                    botaoRecomecar.style.display = 'none';
+                });
+                
+                botaoRecomecar.style.display = 'block';
             } else {
                 let mensagem = 'Que pena! Você errou.<br>';
                 if (palpite < numeroSecreto) {
-                    mensagem += '<span class="dica-texto">Dica:</span> O número secreto é maior que o seu palpite.';
+                    mensagem += '<span class="dica-texto">Dica:</span> O número secreto é <span class="maiorMenor">maior</span> que o seu palpite.';
                 } else {
-                    mensagem += '<span class="dica-texto">Dica:</span> O número secreto é menor que o seu palpite.';
+                    mensagem += '<span class="dica-texto">Dica:</span> O número secreto é <span class="maiorMenor">menor</span> que o seu palpite.';
                 }
-                resultado.innerHTML = mensagem; // Note a mudança de textContent para innerHTML
+                resultado.innerHTML = mensagem; //Mudança de textContent para innerHTML para colocar span e mudar a cor da palavra "Dica"?
             }
 
             input.value = '';
