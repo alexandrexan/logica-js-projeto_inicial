@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Numero Secreto</title>
+    <title>Número Secreto</title>
     <link rel="shortcut icon" href="imgverxan/favicon-32x32.png" type="image/x-icon">
     <style>
         * {
@@ -31,11 +31,11 @@
             font-family: sans-serif;
             margin-top: 20px;
         }
-        h3 {
+        footer {
             color: white;
             font-family: sans-serif;
-            margin-top: 20px;
-            font-size: 15px;
+            font-weight: bold;
+            margin-top: 125px;
         }
         a {
             color: white;
@@ -113,9 +113,6 @@
     <h2>
         O número secreto está entre 1 e 50. Tente adivinhar!
     </h2>
-    <h3>
-        Criado por <a href="https://github.com/alexandrexan" target="_blank">XAN &#x1F448;</a>
-    </h3>
     <div class="localNumero"><input type="number" name="NumeroSecreto" id="NumeroSecreto"></div>
     <button class="botao">Adivinhar</button>
     <p class="resultado"></p>
@@ -149,7 +146,7 @@
                 resultado.innerHTML = `<div class="mensagem-acerto">Parabéns! Você adivinhou o número secreto: ${numeroSecreto} com ${tentativas} ${tentativas > 1 ? 'tentativas' : 'tentativa'}! </div>`;
                 botao.disabled = true;
             } else {
-                let mensagem = 'Que pena! Você errou!<br>';
+                let mensagem = 'Que pena! Você errou.<br>';
                 if (palpite < numeroSecreto) {
                     mensagem += '<span class="dica-texto">Dica:</span> O número secreto é maior que o seu palpite.';
                 } else {
@@ -162,5 +159,8 @@
             input.focus();
         });
     </script>
+    <footer>
+        <p>Criado por <a href="https://github.com/alexandrexan" target="_blank">XAN &#x1F448;</a></p>
+    </footer>
 </body>
 </html>
