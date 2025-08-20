@@ -10,47 +10,62 @@
             margin: 0;
             padding: 0;
         }
+
         body {
             background-color: #0D0D0D;
-            background-image: url(imgverxan/fundo.jpg);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            overflow: hidden;
             height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
+        canvas {
+            display: block;
+            position: fixed; /* fixo no fundo */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;  /* Joga o canvas atrás do conteúdo */
+        }
+
         h1 {
             color: white;
             font-family: sans-serif;
             margin-top: 20px;
         }
+
         h2 {
             color: white;
             font-family: sans-serif;
             margin-top: 20px;
         }
+
         footer {
             color: white;
             font-family: sans-serif;
             font-weight: bold;
             margin-top: 125px;
         }
+
         a {
             color: white;
             text-decoration: none;
         }
+
         a:hover {
             color: #F2380F;
             background-color: #0D0D0D;
         }
+
         .localNumero {
             margin-top: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .localNumero input {
             width: 100px;
             height: 40px;
@@ -61,6 +76,7 @@
             font-weight: bold;
             color: #0D0D0D;
         }
+
         .botao {
             margin-top: 20px;
             padding: 10px 20px;
@@ -72,6 +88,7 @@
             font-weight: bold;
             cursor: pointer;
         }
+
         .botao-recomecar {
             margin-top: 20px;
             padding: 10px 20px;
@@ -84,15 +101,18 @@
             cursor: pointer;
             display: none;
         }
+
         .dica-texto {
             color: yellow;
             font-weight: bold;
         }
+
         .maiorMenor {
             color: yellow;
             font-size: 20px;
             text-shadow: 0 0 5px #F2380F; 
         }
+
         .resultado {
             margin-top: 40px;
             font-size: 20px;
@@ -100,6 +120,7 @@
             font-family: sans-serif;
             color: white;
         }
+
         .mensagem-acerto {
             color: #00ff00;
             text-shadow: 0 0 10px #00ff00;
@@ -124,6 +145,7 @@
     </style>
 </head>
 <body>
+    <canvas id="matrix"></canvas>
     <h1>
         Bem-Vindo ao Jogo do Número Secreto!
     </h1>
@@ -133,72 +155,9 @@
     <div class="localNumero"><input type="number" name="NumeroSecreto" id="NumeroSecreto"></div>
     <button class="botao">Adivinhar</button>
     <p class="resultado"></p>
-    <script>
-        let numeroMaximo = 50;
-        let numeroSecreto = parseInt(Math.random() * numeroMaximo + 1);
-        let tentativas = 0;
-        const resultado = document.querySelector('.resultado');
-        const botao = document.querySelector('.botao');
-        const input = document.querySelector('#NumeroSecreto');
-
-        botao.addEventListener('click', function() {
-            let palpite = input.value;
-            tentativas++;
-
-            if (palpite === '' || isNaN(palpite)) {
-                resultado.textContent = '⚠️ Por favor, insira um número válido.';
-                tentativas--;
-                return;
-            }
-
-            palpite = parseInt(palpite);
-
-            if (palpite > numeroMaximo) {
-                resultado.textContent = '⚠️ Por favor, insira um número entre 1 e 50.';
-                tentativas--;
-                return;
-            }
-
-            if (palpite === numeroSecreto) {
-                resultado.innerHTML = `<div class="mensagem-acerto">
-                    Parabéns! Você adivinhou o número secreto: ${numeroSecreto} com ${tentativas} ${tentativas > 1 ? 'tentativas' : 'tentativa'}!
-                </div>`;
-                botao.disabled = true;
-                
-                // Criar e adicionar botão de recomeçar
-                const botaoRecomecar = document.createElement('button');
-                botaoRecomecar.textContent = 'Jogar Novamente';
-                botaoRecomecar.className = 'botao-recomecar';
-                resultado.after(botaoRecomecar);
-                
-                botaoRecomecar.addEventListener('click', function() {
-                    // Reiniciar o jogo
-                    numeroSecreto = parseInt(Math.random() * numeroMaximo + 1);
-                    tentativas = 0;
-                    botao.disabled = false;
-                    resultado.innerHTML = '';
-                    input.value = '';
-                    input.focus();
-                    botaoRecomecar.style.display = 'none';
-                });
-                
-                botaoRecomecar.style.display = 'block';
-            } else {
-                let mensagem = 'Que pena! Você errou.<br>';
-                if (palpite < numeroSecreto) {
-                    mensagem += '<span class="dica-texto">Dica:</span> O número secreto é <span class="maiorMenor">maior</span> que o seu palpite.';
-                } else {
-                    mensagem += '<span class="dica-texto">Dica:</span> O número secreto é <span class="maiorMenor">menor</span> que o seu palpite.';
-                }
-                resultado.innerHTML = mensagem; //Mudança de textContent para innerHTML para colocar span e mudar a cor da palavra "Dica"?
-            }
-
-            input.value = '';
-            input.focus();
-        });
-    </script>
     <footer>
         <p>Criado por <a href="https://github.com/alexandrexan" target="_blank">XAN &#x1F448;</a></p>
     </footer>
+    <script src="ns.js"></script>
 </body>
 </html>
