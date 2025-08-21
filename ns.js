@@ -1,5 +1,6 @@
 let numeroMaximo = 50;
 let numeroSecreto = parseInt(Math.random() * numeroMaximo + 1);
+console.log(numeroSecreto); // Para depuração, pode ser removido depois
 let tentativas = 0;
 const resultado = document.querySelector('.resultado');
 const botao = document.querySelector('.botao');
@@ -25,7 +26,7 @@ botao.addEventListener('click', function() {
 
             if (palpite === numeroSecreto) {
                 resultado.innerHTML = `<div class="mensagem-acerto">
-                    Parabéns! Você adivinhou o número secreto: ${numeroSecreto} com ${tentativas} ${tentativas > 1 ? 'tentativas' : 'tentativa'}!
+                    Parabéns! Você adivinhou o número secreto: <span class="numero-secreto">${numeroSecreto}</span> com ${tentativas} ${tentativas > 1 ? 'tentativas' : 'tentativa'}!
                 </div>`;
                 botao.disabled = true;
                 
