@@ -13,6 +13,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 20px; /* Adiciona padding nas laterais */
+    text-align: center; /* Centraliza os textos */
 }
 
 canvas {
@@ -29,12 +31,14 @@ h1 {
     color: white;
     font-family: sans-serif;
     margin-top: 20px;
+    font-size: 2rem; /* Tamanho base para o título */
 }
 
 h2 {
     color: white;
     font-family: sans-serif;
     margin-top: 20px;
+    font-size: 1.5rem; /* Tamanho base para o subtítulo */
 }
 
 footer {
@@ -142,4 +146,52 @@ a:hover {
         100% {
                 transform: scale(1);
             }
+}
+
+/* Adicione essas media queries no final do arquivo */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .resultado {
+        font-size: 16px;
+    }
+
+    .mensagem-acerto {
+        padding: 15px;
+    }
+
+    .localNumero {
+        margin-top: 50px;
+    }
+
+    footer {
+        margin-top: 60px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    .botao, .botao-recomecar {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .localNumero input {
+        width: 100px;
+        height: 35px;
+        font-size: 14px;
+    }
 }
