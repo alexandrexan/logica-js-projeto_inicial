@@ -69,8 +69,19 @@ botao.addEventListener('click', function() {
         canvas.height = window.innerHeight;
         canvas.width = window.innerWidth;
 
-        // Escolha a cor (mude para "red", "cyan" ou "lime")
-        const color = "red";
+        // Opção 1: Cor RGB fixa
+        //const color = "#ff0000ff";
+
+        // Opção 2: Função para gerar cores RGB aleatórias
+        function getRandomRGBColor() {
+            const colors = [
+                '#ff0000ff',
+                '#00ff00ff',
+                '#0000ffff' 
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+        const color = getRandomRGBColor();
 
         // Caracteres que vão "cair"
         const numbers = "0123456789";
@@ -85,11 +96,11 @@ botao.addEventListener('click', function() {
 
         function draw() {
         // Fundo preto com leve transparência (efeito rastro)
-        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // Estilo dos números
-        ctx.fillStyle = color; 
+        ctx.fillStyle = getRandomRGBColor();
         ctx.font = fontSize + "px monospace";
 
         // Desenha os números
@@ -108,8 +119,12 @@ botao.addEventListener('click', function() {
 
     setInterval(draw, 60);
 
-  // Ajusta se mudar o tamanho da tela
+    // Ajusta se mudar o tamanho da tela
+    let resizeTimeout;
     window.addEventListener("resize", () => {
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-    });
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+    }, 250);
+});
