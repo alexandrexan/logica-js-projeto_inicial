@@ -6,6 +6,13 @@ const resultado = document.querySelector('.resultado');
 const botao = document.querySelector('.botao');
 const input = document.querySelector('#NumeroSecreto');
 
+// Adicionar event listener para a tecla Enter
+input.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        botao.click(); // Simula o clique no botão
+    }
+});
+
 botao.addEventListener('click', function() {
     let palpite = input.value;
         tentativas++;
