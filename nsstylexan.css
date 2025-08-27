@@ -7,14 +7,14 @@
 }
 
 body {
-    background-color: #0D0D0D;
+    background: #0d0d0d;
     overflow: hidden;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0 20px; /* Adiciona padding nas laterais */
-    text-align: center; /* Centraliza os textos */
+    text-align: center;
 }
 
 canvas {
@@ -28,7 +28,7 @@ canvas {
 }
 
 h1 {
-    color: white;
+    color: #ffffff;
     font-family: sans-serif;
     margin-top: 20px;
     font-size: 2rem; /* Tamanho base para o título */
@@ -36,15 +36,13 @@ h1 {
 
 h2 {
     color: #ffffff;
-    font-family: sans-serif;
     margin-top: 20px;
-    font-size: 1.5rem; /* Tamanho base para o subtítulo */
+    font: normal 1.5rem sans-serif;
 }
 
 footer {
     color: #ffffff;
-    font-family: sans-serif;
-    font-weight: bold;
+    font: bold 1rem sans-serif;
     margin-top: 125px;
 }
 
@@ -83,8 +81,7 @@ a {
     border-radius: 5px;
     border: none;
     padding-left: 10px;
-    font-size: 16px;
-    font-weight: bold;
+    font: bold 16px sans-serif;
     color: #0D0D0D;
 }
 
@@ -93,10 +90,9 @@ a {
     padding: 10px 20px;
     border: 2px solid #ffffff;
     border-radius: 5px;
-    background-color: #000000;
+    background: #000000;
     color: #ffffff;
-    font-size: 16px;
-    font-weight: bold;
+    font: bold 16px sans-serif;
     letter-spacing: .5px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -120,10 +116,9 @@ a {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #00ff00;
+    background: #00ff00;
     color: #000000;
-    font-size: 16px;
-    font-weight: bold;
+    font: bold 16px sans-serif;
     cursor: pointer;
     display: none;
 }
@@ -141,9 +136,7 @@ a {
 
 .resultado {
     margin-top: 40px;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: sans-serif;
+    font: bold 20px sans-serif;
     color: white;
 }
 
@@ -153,7 +146,7 @@ a {
     animation: pulse 1.5s infinite;
     padding: 20px;
     border-radius: 10px;
-    background-color: #0D0D0D;
+    background: #0D0D0D;
     border: 2px solid #00ff00;
 }
 
@@ -176,44 +169,27 @@ a {
 
 /* Adicione essas media queries no final do arquivo */
 @media screen and (max-width: 768px) {
-    h1 {
-        font-size: 1.5rem;
-    }
+    
+    h1 { font-size: 1.5rem; }
 
-    h2 {
-        font-size: 1.2rem;
-    }
+    h2 { font-size: 1.2rem; }
 
-    .resultado {
-        font-size: 16px;
-    }
+    .resultado { font-size: 16px; }
 
-    .mensagem-acerto {
-        padding: 15px;
-    }
+    .mensagem-acerto { padding: 15px; }
 
-    .localNumero {
-        margin-top: 50px;
-    }
+    .localNumero { margin-top: 50px; }
 
-    footer {
-        margin-top: 60px;
-    }
+    footer { margin-top: 60px; }
 }
 
 @media screen and (max-width: 480px) {
-    h1 {
-        font-size: 1.2rem;
-    }
+    h1 { font-size: 1.2rem; }
 
-    h2 {
-        font-size: 1rem;
-    }
+    h2 { font-size: 1rem; }
 
-    .botao, .botao-recomecar {
-        padding: 8px 16px;
-        font-size: 14px;
-    }
+    .botao, .botao-recomecar 
+    { padding: 8px 16px; font-size: 14px; }
 
     .localNumero input {
         width: 100px;
